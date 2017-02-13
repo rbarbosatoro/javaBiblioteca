@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="_csrf" content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript"
@@ -22,9 +25,11 @@
 				<h2>Custom search field</h2>
 				<div id="custom-search-input">
 					<div class="input-group col-md-12">
-						<input type="text" id="AJAXnombreAutor" class="form-control input-lg"
-							placeholder="Buscar" /> <span class="input-group-btn">
-							<button class="btn btn-info btn-lg" id="AJAXautores" type="button">
+						<input type="text" id="AJAXnombreAutor"
+							class="form-control input-lg" placeholder="Buscar" /> <span
+							class="input-group-btn">
+							<button class="btn btn-info btn-lg" id="AJAXautores"
+								type="button">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
 						</span>
@@ -46,7 +51,7 @@
 			</thead>
 			<tbody>
 
-				
+
 				<c:forEach items="${autores}" var="autor">
 					<tr data-id="${autor.id}">
 						<td>${autor.id}</td>

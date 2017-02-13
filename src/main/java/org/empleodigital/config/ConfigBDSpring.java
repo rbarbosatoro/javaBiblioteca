@@ -10,7 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -30,7 +33,7 @@ public class ConfigBDSpring {
 	    dataSource.setUrl("jdbc:mysql://localhost:3306/javaBiblioteca?createDatabaseIfNotExist=true");
 	    dataSource.setUsername("root");
 	    dataSource.setPassword("");
-	 
+	    
 	    return dataSource;
 	}
 	
@@ -71,4 +74,18 @@ public class ConfigBDSpring {
 	 
 	    return sessionBuilder.buildSessionFactory(); 
 	}
+	
+	@Bean
+    public DataSourceInitializer dataSourceInitializer(DataSource dataSource)
+    {
+        ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+        resourceDatabasePopulator.addScript(new ClassPathResource("data.sql"));
+
+        DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
+        dataSourceInitializer.setDataSource(dataSource);
+        dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
+        return dataSourceInitializer;
+    }
+
+	
 }

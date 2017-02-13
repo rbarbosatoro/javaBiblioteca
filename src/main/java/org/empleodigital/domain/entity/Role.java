@@ -1,32 +1,25 @@
 package org.empleodigital.domain.entity;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Autor {
+public class Role {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty 
 	private String nombre;
-	
-	@OneToMany(mappedBy="autor",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	private Set<Libro> libros;
-	
-	public Autor() {
-		
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -35,14 +28,6 @@ public class Autor {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	@Override
@@ -62,7 +47,7 @@ public class Autor {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Autor other = (Autor) obj;
+		Role other = (Role) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -75,6 +60,7 @@ public class Autor {
 			return false;
 		return true;
 	}
-
+	
+	
 
 }

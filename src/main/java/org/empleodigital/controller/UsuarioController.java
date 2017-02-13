@@ -1,7 +1,10 @@
 package org.empleodigital.controller;
 
+import java.util.Set;
+
 import javax.validation.Valid;
 
+import org.empleodigital.domain.entity.Role;
 import org.empleodigital.domain.entity.Usuario;
 import org.empleodigital.domain.repository.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepositorio repoUsu;
+	
 	
 	@RequestMapping(method = RequestMethod.GET,value={"/login","/"})
 	public String loginInicio(Model model) {

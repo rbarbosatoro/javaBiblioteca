@@ -17,10 +17,11 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserService userser;
-	@Autowired
-	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		//auth.userDetailsService(userser);
-		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userser).passwordEncoder(encoder());
+		
+		//auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
 	}
 	
 	@Override

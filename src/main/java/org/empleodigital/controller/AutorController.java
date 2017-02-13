@@ -37,7 +37,7 @@ public class AutorController {
 		return "views/listadoAutores";
 	}
 	
-	@RequestMapping(value="/n={name}",  method = RequestMethod.GET)
+	@RequestMapping(value="/name={name}",  method = RequestMethod.GET)
 	public String ListadoDeAutoresPorNombre(@PathVariable String name,Model model){
 		
 		if(name.isEmpty()){

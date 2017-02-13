@@ -22,10 +22,9 @@ var cogerId = function() {
 var buscarAutores = function(){
 	$("#AJAXnombreAutor").on("keyup",function(){
 		var nombre=$("#AJAXnombreAutor").val();
-		console.log(nombre);
 		
 		$.ajax({
-            url : 'autores/n='+nombre,
+            url : 'autores/name='+nombre,
             type : 'GET',
             success: function(response) {
                 $('#ajaxOutput').html(response);
@@ -42,12 +41,13 @@ var borraJug = function() {
 
 	$(".btn-borrar").on("click", function() {
 		var id = $(".modal-body #autor").val();
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
 		$.ajax({
 			url : "/javaBiblioteca/autores/" + id,
-			headers : {
-				'X-CSRF-TOKEN' : csrf
-			},
-
 			type : 'DELETE',
 			error : function(xhr, status, error) {
 				alert(status);
