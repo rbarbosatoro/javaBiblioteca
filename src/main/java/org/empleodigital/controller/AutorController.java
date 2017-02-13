@@ -36,8 +36,19 @@ public class AutorController {
 
 		return "views/listadoAutores";
 	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	
+	@RequestMapping(value="/n={name}",  method = RequestMethod.GET)
+	public String ListadoDeAutoresPorNombre(@PathVariable String name,Model model){
+		
+		if(name.isEmpty()){
+			model.addAttribute("autores",autorRepo.findAll());
+		}else{
+			model.addAttribute("autores",autorRepo.findAllByNombreContaining(name));
+		}
+		return "views/fragmentos/autoresAJAX";
+	}
+	
+	@RequestMapping(value = "/{id:[\\d]+}", method = RequestMethod.GET)
 	@ResponseBody 
 	public Autor mostrarAutor( @PathVariable Long id) {
 		Autor au = autorRepo.findOne(id);

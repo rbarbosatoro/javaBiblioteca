@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -15,36 +16,56 @@
 
 <body>
 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Custom search field</h2>
+				<div id="custom-search-input">
+					<div class="input-group col-md-12">
+						<input type="text" id="AJAXnombreAutor" class="form-control input-lg"
+							placeholder="Buscar" /> <span class="input-group-btn">
+							<button class="btn btn-info btn-lg" id="AJAXautores" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Editar</th>
-				<th>Borrar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${autores}" var="autor">
-				<tr data-id="${autor.id}">
-					<td>${autor.id}</td>
-					<td><a href="<c:url value="/autores/autor/${autor.id}" />">${autor.nombre}</a></td>
-					<td><a class="editar-autor btn btn-warning">Editar</a></td>
-					<td><a class="btn btn-danger open-Modal"
-						data-nombre="${autor.nombre}" data-id="${autor.id}"
-						data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
+	<div id="ajaxOutput">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Editar</th>
+					<th>Borrar</th>
 				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5"><a class="btn btn-primary" data-toggle="modal"
-					href='#modal-autor'>Añadir autor</a></td>
-			</tr>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
 
+				
+				<c:forEach items="${autores}" var="autor">
+					<tr data-id="${autor.id}">
+						<td>${autor.id}</td>
+						<td><a href="<c:url value="/autores/autor/${autor.id}" />">${autor.nombre}</a></td>
+						<td><a class="editar-autor btn btn-warning">Editar</a></td>
+						<td><a class="btn btn-danger open-Modal"
+							data-nombre="${autor.nombre}" data-id="${autor.id}"
+							data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
+					</tr>
+				</c:forEach>
 
+				<tr>
+					<td colspan="5"><a class="btn btn-primary" data-toggle="modal"
+						href='#modal-autor'>Añadir autor</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
 
 	<!-- empiezan la diversion -->
 
@@ -71,6 +92,7 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					</div>
+					<input type="hidden" id="_csrf" name="_csrf" value="${_csrf.token}">
 				</form>
 			</div>
 		</div>

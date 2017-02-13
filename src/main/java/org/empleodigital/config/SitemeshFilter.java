@@ -7,8 +7,11 @@ public class SitemeshFilter extends ConfigurableSiteMeshFilter {
 
 	@Override
     protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
-        builder.addDecoratorPath("/*", "/WEB-INF/decorators/tags.jsp").addExcludedPath("/excluded/*")
-                .addExcludedPath("/resources/*").addExcludedPath("/decorators/*");
+        builder.addDecoratorPath("/autores", "/WEB-INF/decorators/tags.jsp")
+        .addDecoratorPath("/libros", "/WEB-INF/decorators/tags.jsp")
+        .addDecoratorPath("/autor", "/WEB-INF/decorators/tags.jsp")
+        .addExcludedPath("/excluded/*")
+                .addExcludedPath("/resources/*").addExcludedPath("/decorators/*").addExcludedPath("/WEB-INF/views/fragmentos/*");
     }
 	
 }

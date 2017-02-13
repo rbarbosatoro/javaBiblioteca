@@ -7,11 +7,12 @@
 
 <html>
 <head>
-<link rel="shortcut icon"
-	href="<c:url value="static/img/favicon.ico" />" type="image/x-icon">
-<link rel="icon" href='<c:url value="static/img/favicon.ico" />'
-	type="image/x-icon">
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="_csrf" content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 
 <title><sitemesh:write property='title' /></title>
 
@@ -48,8 +49,7 @@
 			<a class="navbar-brand" href="#">Biblioteca</a>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="<c:url value="/" />">Inicio</a></li>
-				<li><a href="<c:url value="/autores" />">Autores</a>
-				</li>
+				<li><a href="<c:url value="/autores" />">Autores</a></li>
 				<li><a href="<c:url value="/libros" />">Libros</a></li>
 				<li><a href="<c:url value="/" />">Administración</a></li>
 			</ul>

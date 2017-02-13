@@ -64,13 +64,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="Nombre">Título</label> <input type="text" class="form-control"
-							id="titulo-libro" name="libro" placeholder="Título del libro"> <label
-								for="Nombre">Autor</label> <input type="text"
-								class="form-control" id="titulo-libro" name="libro"
-								placeholder="Título del libro"> <label for="Nombre">Categoría</label>
-							<input type="text" class="form-control" id="titulo-libro"
-								name="libro" placeholder="Título del libro"> >>>>>>>
-							25e57e2b5e38aab5744734ff4a6499039a80dc06
+							id="titulo-libro" name="titulo" placeholder="Título del libro"> 
 						</div>
 						<div class="form-group">
 							<label for="autor">Autor</label> <select name="autor" id="autor"
@@ -80,8 +74,9 @@
 									<option value="${autor.id}">${autor.nombre}</option>
 
 								</c:forEach>
-
+								
 							</select>
+							<input type="hidden" id="_csrf" name="_csrf" value="${_csrf.token}">
 						</div>
 
 						<div class="form-group">
