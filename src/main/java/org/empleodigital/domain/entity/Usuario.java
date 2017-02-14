@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,7 @@ public class Usuario implements UserDetails  {
 	private String direccion;
 
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 	
 	private String telefono;
@@ -133,7 +135,7 @@ public class Usuario implements UserDetails  {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		for (Role r : getRoles()){
-			authorities.add(new SimpleGrantedAuthority(r.getNombre()));
+			authorities.add(new SimpleGrantedAuthority("ROLE_"+r.getNombre().toUpperCase()));
 		}
 		
 		return authorities;
@@ -147,7 +149,7 @@ public class Usuario implements UserDetails  {
 
 	@Override
 	public String getUsername() {
-		return this.getEmail();
+		return email;
 	}
 
 	@Override

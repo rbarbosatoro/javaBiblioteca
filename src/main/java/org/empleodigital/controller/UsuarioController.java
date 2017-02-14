@@ -1,20 +1,22 @@
 package org.empleodigital.controller;
 
-import java.util.Set;
-
 import javax.validation.Valid;
 
 import org.empleodigital.domain.entity.Role;
 import org.empleodigital.domain.entity.Usuario;
+import org.empleodigital.domain.propertyEditors.RolePropertyEditor;
 import org.empleodigital.domain.repository.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -24,6 +26,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepositorio repoUsu;
 	
+	@Autowired
+	private RolePropertyEditor roleProperty;
 	
 	@RequestMapping(method = RequestMethod.GET,value={"/login","/"})
 	public String loginInicio(Model model) {
@@ -40,5 +44,9 @@ public class UsuarioController {
 		return "index";
 	}
 	
+	@InitBinder
+	public void initBinder(WebDataBinder webDataBinder) {
+		webDataBinder.registerCustomEditor(Role.class, roleProperty);
+	}
 	
 }

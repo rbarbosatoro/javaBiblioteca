@@ -28,8 +28,8 @@ var buscarAutores = function(){
             type : 'GET',
             success: function(response) {
                 $('#ajaxOutput').html(response);
-            	editarJugador();
-            	borraJug();
+            	editarAutor();
+            	borraAutor();
             }
         });
         return false;
