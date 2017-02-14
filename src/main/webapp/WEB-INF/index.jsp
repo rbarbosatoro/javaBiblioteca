@@ -119,11 +119,11 @@
 						<input type="hidden" id="input" name="id" class="form-control"
 							value="">
 						<sec:authorize access="isAnonymous()">
-							<input type="hidden" id="input" name="permisos"
+							<input type="hidden" id="input" name="roles"
 								class="form-control" value="2">
 						</sec:authorize>
 						<sec:authorize access="hasRole('ADMIN')">
-							<input type="hidden" id="input" name="permisos"
+							<input type="hidden" id="input" name="roles"
 								class="form-control" value="1">
 						</sec:authorize>
 						<input type="hidden" name="_csrf" id="_csrf" class="form-control"

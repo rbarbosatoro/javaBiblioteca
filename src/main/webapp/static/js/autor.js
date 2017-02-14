@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	editarJugador();
-	borraJug();
+	editarAutor();
+	borraAutor();
 	buscarAutores();
 })
 
@@ -12,10 +12,10 @@ var limpiarModal = function() {
 
 var cogerId = function() {
 	$(document).on("click", ".open-Modal", function() {
-		var putita = $(this).data('id');
-		var nomfede = $(this).data('nombre');
-		$(".modal-body #autor").val(putita);
-		$(".modal-body #autorNombre").text(nomfede);
+		var id = $(this).data('id');
+		var nomauto = $(this).data('nombre');
+		$(".modal-body #autor").val(id);
+		$(".modal-body #autorNombre").text(nomauto);
 	});
 }
 
@@ -36,7 +36,7 @@ var buscarAutores = function(){
 	})
 }
 
-var borraJug = function() {
+var borraAutor = function() {
 	cogerId();
 
 	$(".btn-borrar").on("click", function() {
@@ -62,7 +62,7 @@ var borraJug = function() {
 	})
 }
 
-var editarJugador = function() {
+var editarAutor = function() {
 	cogerId();
 
 	$(".editar-autor").on(

@@ -22,7 +22,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h2>Custom search field</h2>
+				<h2>Buscar Autores por nombre</h2>
 				<div id="custom-search-input">
 					<div class="input-group col-md-12">
 						<input type="text" id="AJAXnombreAutor"
