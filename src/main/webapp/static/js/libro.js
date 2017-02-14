@@ -1,12 +1,34 @@
 $(document).ready(function() {
-	editarJugador();
-	borraJug();
+	editarLibro();
+	borrarLib();
+	cogerLibrosAJAX();
 })
 
 var limpiarModal=function(){
 	$('.modal-title').text("Añadir Libro");
 	$('#titulo-libro').val('');
 	$('#inputId').val('');
+}
+
+var cogerLibrosAJAX = function(){
+	
+	$("#AJAXtitulolibro").on("keyup",function(){
+		
+		var titulo = $("#AJAXtitulolibro").val();
+		
+		$.ajax({
+            url : 'libros/title='+titulo,
+            type : 'GET',
+            success: function(response) {
+                $('#ajaxOutput').html(response);
+            	editarLibro();
+            	borrarLib();
+            }
+        });
+        return false;
+		
+	});
+	
 }
 
 var cogerId=function(){
@@ -18,7 +40,7 @@ var cogerId=function(){
 	});
 }
 
-var borraJug=function(){
+var borrarLib=function(){
 	cogerId();
 	
 	$(".btn-borrar").on("click", function() {
@@ -40,7 +62,7 @@ var borraJug=function(){
 	})
 }
 
-var editarJugador= function() {
+var editarLibro= function() {
 	cogerId();
 	
 	$(".editar-libro").on('click', function() {

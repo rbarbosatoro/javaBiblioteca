@@ -10,5 +10,7 @@ public interface LibroRepositorio extends JpaRepository<Libro, Long>{
 	
 	Iterable<Libro> findAllByAutor(Autor au);
 
+	Iterable<Libro> findAllByTituloContaining(String Titulo);
+	
 	Libro findFirstByAutorOrderByAutorDesc(Autor autor);
 }

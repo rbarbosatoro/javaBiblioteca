@@ -33,7 +33,8 @@ public class AutorController {
 	public String ProstitutaInTheHeaven(Model model) {
 
 		model.addAttribute("autores", autorRepo.findAll());
-
+		model.addAttribute("libros", libroRepo.findAll());
+		
 		return "views/listadoAutores";
 	}
 	

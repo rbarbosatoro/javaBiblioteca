@@ -22,7 +22,6 @@ var cogerId = function() {
 var buscarAutores = function(){
 	$("#AJAXnombreAutor").on("keyup",function(){
 		var nombre=$("#AJAXnombreAutor").val();
-		
 		$.ajax({
             url : 'autores/name='+nombre,
             type : 'GET',

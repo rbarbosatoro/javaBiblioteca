@@ -57,6 +57,18 @@ public class LibroController {
 			
 		}
 		
+		@RequestMapping(value="/title={titulo}")
+		public String librosPorTitulo(Model model,@PathVariable String titulo){
+			
+			if(titulo.isEmpty()){
+				model.addAttribute("libros",libroRepo.findAll());
+			}else{
+				model.addAttribute("libros",libroRepo.findAllByTituloContaining(titulo));
+			}
+			
+			return "views/fragmentos/librosAJAX";
+		}
+		
 		@RequestMapping(value="/libro/{id}",method = RequestMethod.GET)
 		public String mostrarLibros(Model model,@PathVariable Long id)
 		{
@@ -80,9 +92,9 @@ public class LibroController {
 			webDataBinder.registerCustomEditor(Autor.class, autorprop);
 		}
 		
-		@RequestMapping(method=RequestMethod.GET, value="/{id}")
+		@RequestMapping(method=RequestMethod.GET, value="/{id:[\\d]+}")
 		@ResponseBody
-		public Libro buscarAutor(@PathVariable Long id)
+		public Libro buscarLibro(@PathVariable Long id)
 		{
 			Libro li =libroRepo.findOne(id);
 			return li;

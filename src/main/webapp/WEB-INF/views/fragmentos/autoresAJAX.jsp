@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <table class="table table-hover">
 	<thead>
@@ -24,10 +20,29 @@
 					data-nombre="${autor.nombre}" data-id="${autor.id}"
 					data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
 			</tr>
+			<tr>
+				<td colspan="5">
+					<table class="table table-bordered"
+						style="width: 80%; margin: auto">
+						<tr class="info" style="margin-left: 20%">
+							<th style="width: 5%">ID libro</th>
+							<th>Titulo Libro</th>
+						</tr>
+						<c:forEach items="${autor.getLibros()}" var="libro">
+							<tr>
+
+								<td>${libro.id}</td>
+								<td>${libro.titulo}</td>
+
+							</tr>
+						</c:forEach>
+					</table>
+				</td>
+			</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="5"><a class="btn btn-primary" data-toggle="modal"
-				href='#modal-autor'>AÃ±adir autor</a></td>
+				href='#modal-autor'>Añadir autor</a></td>
 		</tr>
 	</tbody>
 </table>

@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h2>Custom search field</h2>
+				<h2>Buscar por titulo de libro</h2>
 				<div id="custom-search-input">
 					<div class="input-group col-md-12">
 						<input type="text" id="AJAXtitulolibro"
@@ -46,7 +46,7 @@
 				<th>Borrar</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="ajaxOutput">
 			<c:forEach items="${libros}" var="libro">
 				<tr data-id="${libro.id}">
 					<td>${libro.id}</td>
@@ -61,7 +61,7 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="5"><a class="btn btn-primary" data-toggle="modal" href='#modal-libro'>Añadir libro</a></td>
+				<td colspan="6"><a class="btn btn-primary" data-toggle="modal" href='#modal-libro'>Añadir libro</a></td>
 			</tr>
 		</tbody>
 	</table>

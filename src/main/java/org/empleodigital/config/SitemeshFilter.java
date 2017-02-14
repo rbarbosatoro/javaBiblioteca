@@ -13,7 +13,7 @@ public class SitemeshFilter extends ConfigurableSiteMeshFilter {
         .addDecoratorPath("/libros", "/WEB-INF/decorators/tags.jsp")
         .addDecoratorPath("/autor", "/WEB-INF/decorators/tags.jsp")
         .addExcludedPath("/excluded/*")
-                .addExcludedPath("/resources/*").addExcludedPath("/decorators/*").addExcludedPath("/autores/*");
+                .addExcludedPath("/resources/*").addExcludedPath("/decorators/*").addExcludedPath("/autores/*").addExcludedPath("/libros/*");
     }
 	
 }

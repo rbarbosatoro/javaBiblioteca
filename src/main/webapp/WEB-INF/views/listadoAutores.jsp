@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -60,6 +59,25 @@
 						<td><a class="btn btn-danger open-Modal"
 							data-nombre="${autor.nombre}" data-id="${autor.id}"
 							data-toggle="modal" href='#modal-borrar'>Borrar</a></td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<table class="table table-bordered"
+								style="width: 80%; margin: auto">
+								<tr class="info" style="margin-left: 20%">
+									<th style="width: 5%">ID libro</th>
+									<th>Titulo Libro</th>
+								</tr>
+								<c:forEach items="${autor.getLibros()}" var="libro">
+									<tr>
+
+										<td>${libro.id}</td>
+										<td>${libro.titulo}</td>
+
+									</tr>
+								</c:forEach>
+							</table>
+						</td>
 					</tr>
 				</c:forEach>
 
